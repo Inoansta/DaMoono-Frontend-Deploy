@@ -1,0 +1,19 @@
+pre-push:
+  parallel: false
+  commands:
+    lint:
+      run: |
+        npm run lint-format
+      stage_fixed: true
+
+    build:
+      run: |
+        npm run build
+      stage_fixed: true
+
+pre-commit:
+  commands:
+    lint:
+      run: |
+        npm run lint-format
+      stage_fixed: true
