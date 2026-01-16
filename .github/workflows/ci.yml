@@ -1,0 +1,35 @@
+name: Synch To Forked Repo
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  sync-to-fork:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repository (A)
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.AUTO_ACTIONS }}
+          fetch-depth: 0
+          ref: main
+
+      - name: Add remote-url
+        run: |
+          git remote add forked-repo https://github.com/Inoansta/DaMoono-Frontend-Deploy
+          git config user.name Inoansta
+          git config user.email sea0416@naver.com
+
+      - name: Push changes to forked-repo
+        run: |
+          git push -f forked-repo main
+
+      - name: Clean up
+        run: |
+          git remote remove forked-repo
