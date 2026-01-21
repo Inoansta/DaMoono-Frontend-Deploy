@@ -1,3 +1,8 @@
 export const PAGE_PATHS = {
-  HOME: '/',
+  LOGIN: '/',
+  HOME: '/home',
+  CHAT: '/chat',
+  CHAT_MANUAL: '/chat/manual',
+  SUMMARY: '/summary',
+  ADMIN: '/admin',
 };
