@@ -1,7 +1,9 @@
 import { createBrowserRouter } from 'react-router';
 import { RouterProvider as Provider } from 'react-router/dom';
+import Admin from '../pages/Admin/Admin';
 import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
+import Summary from '../pages/Summary/SummaryPage';
 import { PAGE_PATHS } from '../shared/config/paths';
 
 export default function RouterProvider() {
@@ -13,6 +15,14 @@ export default function RouterProvider() {
     {
       path: PAGE_PATHS.HOME,
       Component: Home,
+    },
+    {
+      path: PAGE_PATHS.SUMMARY,
+      Component: Summary,
+    },
+    {
+      path: PAGE_PATHS.ADMIN,
+      Component: Admin,
     },
   ]);
   return <Provider router={router} />;
