@@ -8,21 +8,14 @@ export const container = style({
   backgroundColor: '#FEFDFD',
 });
 
-// Header
-export const header = style({
-  position: 'fixed',
-  top: 0,
-  left: '50%',
-  transform: 'translateX(-50%)',
-  width: '480px',
-  maxWidth: '100%',
+// Chat Header (채팅 페이지 내부 헤더)
+export const chatHeader = style({
   display: 'flex',
   alignItems: 'center',
   gap: '8px',
   padding: '16px 20px',
   backgroundColor: '#fff',
   borderBottom: '1px solid #f0f0f0',
-  zIndex: 100,
 });
 
 export const headerIcon = style({
@@ -42,7 +35,6 @@ export const content = style({
   flex: 1,
   overflowY: 'auto',
   padding: '20px',
-  paddingTop: '80px',
   paddingBottom: '180px',
 });
 
@@ -317,47 +309,4 @@ export const iconButton = style({
 export const icon = style({
   width: '100%',
   height: '100%',
-});
-
-// Bottom Nav
-export const bottomNav = style({
-  position: 'fixed',
-  bottom: 0,
-  left: '50%',
-  transform: 'translateX(-50%)',
-  width: '480px',
-  maxWidth: '100%',
-  display: 'flex',
-  justifyContent: 'space-around',
-  backgroundColor: '#fff',
-  borderTop: '1px solid #e0e0e0',
-  padding: '12px 0',
-  paddingBottom: 'calc(12px + env(safe-area-inset-bottom))',
-  boxShadow: '0 -2px 10px rgba(0, 0, 0, 0.05)',
-});
-
-export const navItem = style({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  gap: '4px',
-  background: 'none',
-  border: 'none',
-  cursor: 'pointer',
-  color: '#999',
-  transition: 'color 0.2s',
-
-  ':hover': {
-    color: '#333',
-  },
-});
-
-export const navIcon = style({
-  fontSize: '24px',
-});
-
-export const navLabel = style({
-  fontFamily: 'S-Core Dream',
-  fontSize: '12px',
-  fontWeight: 400,
 });

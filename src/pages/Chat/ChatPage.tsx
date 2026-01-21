@@ -7,6 +7,7 @@ import mic from '@/assets/images/mic.png';
 import moonerbot from '@/assets/images/moonerbot.png';
 import plusButton from '@/assets/images/plus-button.png';
 import sendButton from '@/assets/images/send-button.svg';
+import BottomNav from '@/components/BottomNav';
 import Layout from '../layout/Layout';
 import MessageCard from './components/MessageCard';
 import { recommendedQuestions } from './data/referenceData';
@@ -143,11 +144,11 @@ export default function ChatPage() {
   return (
     <Layout>
       <div className={styles.container}>
-        {/* Header */}
-        <header className={styles.header}>
+        {/* Chat Header */}
+        <div className={styles.chatHeader}>
           <img src={chatIcon} alt="채팅" className={styles.headerIcon} />
           <span className={styles.headerTitle}>다무너와 대화하기</span>
-        </header>
+        </div>
 
         <div className={styles.content} ref={contentRef}>
           {/* Welcome Section */}
@@ -396,25 +397,7 @@ export default function ChatPage() {
         </div>
       </div>
 
-      {/* Bottom Nav */}
-      <nav className={styles.bottomNav}>
-        <button type="button" className={styles.navItem}>
-          <span className={styles.navIcon}>📞</span>
-          <span className={styles.navLabel}>고객센터</span>
-        </button>
-        <button
-          type="button"
-          className={styles.navItem}
-          onClick={() => navigate('/home')}
-        >
-          <span className={styles.navIcon}>🏠</span>
-          <span className={styles.navLabel}>홈</span>
-        </button>
-        <button type="button" className={styles.navItem}>
-          <span className={styles.navIcon}>👤</span>
-          <span className={styles.navLabel}>마이페이지</span>
-        </button>
-      </nav>
+      <BottomNav />
     </Layout>
   );
 }
