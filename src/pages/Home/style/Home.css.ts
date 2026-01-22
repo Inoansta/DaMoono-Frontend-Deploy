@@ -1,6 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
 export const container = style({
+<<<<<<< HEAD
   padding: '20px',
   paddingTop: '80px',
   paddingBottom: '80px',
@@ -234,4 +235,7 @@ export const productPrice = style({
   fontWeight: '700',
   color: '#333',
   margin: 0,
+=======
+  color: 'red',
+>>>>>>> 3e2f934 (feat : 고객센터 페이지 구현)
 });
