@@ -4,15 +4,16 @@ import ArmyGuide from '@/pages/Customer/ArmyGuide';
 import CustomerService from '@/pages/Customer/CustomerService';
 import MinorGuide from '@/pages/Customer/MinorGuide';
 import ProxyGuide from '@/pages/Customer/ProxyGuide';
+import MyPage from '@/pages/MyPage/MyPage';
 import Admin from '../pages/Admin/Admin';
 import ChatManualPage from '../pages/Chat/ChatManualPage';
 import ChatPage from '../pages/Chat/ChatPage';
 import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
+import PersonalityTest from '../pages/PersonalityTest/PersonalityTest';
 import Plan from '../pages/Plan/Plan';
 import Subscribe from '../pages/Subscribe/Subscribe';
 import Summary from '../pages/Summary/SummaryPage';
-
 import { PAGE_PATHS } from '../shared/config/paths';
 
 export default function RouterProvider() {
@@ -42,6 +43,10 @@ export default function RouterProvider() {
       Component: Admin,
     },
     {
+      path: PAGE_PATHS.MYPAGE,
+      Component: MyPage,
+    },
+    {
       path: PAGE_PATHS.CUSTOMER_SERVICE,
       element: <CustomerService />,
     },
@@ -66,6 +71,10 @@ export default function RouterProvider() {
     {
       path: PAGE_PATHS.SUBSCRIBE,
       Component: Subscribe,
+    },
+    {
+      path: PAGE_PATHS.PERSONALITY_TEST,
+      Component: PersonalityTest,
     },
   ]);
   return <Provider router={router} />;
