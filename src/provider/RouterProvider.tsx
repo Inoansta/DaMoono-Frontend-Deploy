@@ -72,11 +72,7 @@ export default function RouterProvider() {
     },
     {
       path: PAGE_PATHS.LOGIN_GUARD,
-      element: (
-        <ProtectedRoute>
-          <MyPage />
-        </ProtectedRoute>
-      ),
+      element: <ProtectedRoute />,
     },
     {
       path: PAGE_PATHS.CUSTOMER_SERVICE,
