@@ -133,6 +133,13 @@ export default function ChatConsultPage() {
     }
   };
 
+  const handleBack = () => {
+    if (confirm('상담을 종료하고 돌아가시겠습니까?')) {
+      socketService.endConsult();
+      navigate('/chat');
+    }
+  };
+
   const formatTime = (date: Date) => {
     const hours = date.getHours();
     const minutes = date.getMinutes();
@@ -182,8 +189,10 @@ export default function ChatConsultPage() {
         <ChatHeader
           title="상담사와 대화하기"
           showActions={true}
+          showBackButton={true}
           onEndConsult={handleEndConsult}
           onSummary={handleSummary}
+          onBack={handleBack}
         />
 
         {/* 상담 상태 */}

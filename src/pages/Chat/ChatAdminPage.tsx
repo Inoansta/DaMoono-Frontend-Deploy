@@ -6,6 +6,7 @@ import counselingIcon from '@/assets/images/counseling-icon.png';
 import counselingMoono from '@/assets/images/counseling-moono.png';
 import noCounselingMoono from '@/assets/images/no-counseling-moono.png';
 import Header from '@/components/Header';
+import { logout } from '@/services/authApi';
 import socketService from '@/services/socketService';
 import ChatInput from './components/ChatInput';
 import VoiceRecorder, {
@@ -136,11 +137,20 @@ export default function ChatAdminPage() {
     navigate(`/chat/admin?session=${selectedSessionId}`);
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     if (confirm('로그아웃 하시겠습니까?')) {
-      localStorage.removeItem('userName');
-      localStorage.removeItem('userRole');
-      navigate('/login');
+      try {
+        await logout();
+        localStorage.removeItem('userName');
+        localStorage.removeItem('userRole');
+        navigate('/');
+      } catch (error) {
+        console.error('로그아웃 실패:', error);
+        // 에러가 발생해도 로컬 스토리지는 정리하고 홈으로 이동
+        localStorage.removeItem('userName');
+        localStorage.removeItem('userRole');
+        navigate('/');
+      }
     }
   };
 
