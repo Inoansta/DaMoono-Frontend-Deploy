@@ -56,8 +56,8 @@ export const modalContent = style({
 });
 
 export const modalImage = style({
-  width: '120px',
-  height: '120px',
+  width: '160px',
+  height: '160px',
   objectFit: 'contain',
   marginBottom: '10px',
 });
@@ -67,7 +67,7 @@ export const modalTitle = style({
   fontWeight: '500',
   color: '#000000',
   textAlign: 'center',
-  lineHeight: '1.5',
+  lineHeight: '1',
   margin: 0,
 });
 

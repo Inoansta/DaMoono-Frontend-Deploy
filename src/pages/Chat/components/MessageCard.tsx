@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router';
 import moonerCrew from '@/assets/images/mooner-crew.png';
 import * as styles from '../style/MessageCard.css';
 
@@ -19,6 +20,7 @@ interface MessageCardProps {
 export default function MessageCard({ cards, type }: MessageCardProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,6 +74,22 @@ export default function MessageCard({ cards, type }: MessageCardProps) {
     if (type === 'event') return '더 많은 이벤트 보러가기';
     return '더 많은 정보 보러가기';
   };
+
+  const handleMoreClick = () => {
+    if (type === 'plan') {
+      navigate('/plan');
+    } else if (type === 'subscription') {
+      navigate('/subscribe');
+    } else if (type === 'phone') {
+      // 휴대폰 페이지 경로 (필요시 수정)
+      navigate('/phone');
+    } else if (type === 'event') {
+      // 이벤트 페이지 경로 (필요시 수정)
+      navigate('/event');
+    }
+  };
+
+  const totalCards = type === 'event' ? cards.length : cards.length + 1;
 
   return (
     <div className={styles.container}>
@@ -142,18 +160,24 @@ export default function MessageCard({ cards, type }: MessageCardProps) {
             );
           })}
 
-          {/* 마지막 카드 */}
-          <div className={styles.card}>
-            <h4 className={styles.cardTitle}>{getMoreText()}</h4>
-            <img
-              src={moonerCrew}
-              alt="무너 크루"
-              className={styles.crewImage}
-            />
-            <button type="button" className={styles.moreButton}>
-              {getMoreButtonText()}
-            </button>
-          </div>
+          {/* 마지막 카드 - 이벤트 타입이 아닐 때만 표시 */}
+          {type !== 'event' && (
+            <div className={styles.card}>
+              <h4 className={styles.cardTitle}>{getMoreText()}</h4>
+              <img
+                src={moonerCrew}
+                alt="무너 크루"
+                className={styles.crewImage}
+              />
+              <button
+                type="button"
+                className={styles.moreButton}
+                onClick={handleMoreClick}
+              >
+                {getMoreButtonText()}
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
@@ -168,13 +192,13 @@ export default function MessageCard({ cards, type }: MessageCardProps) {
           ←
         </button>
         <span className={styles.pageIndicator}>
-          {currentIndex + 1} / {cards.length + 1}
+          {currentIndex + 1} / {totalCards}
         </span>
         <button
           type="button"
           className={styles.navButton}
           onClick={handleNext}
-          disabled={currentIndex === cards.length}
+          disabled={currentIndex === totalCards - 1}
         >
           →
         </button>

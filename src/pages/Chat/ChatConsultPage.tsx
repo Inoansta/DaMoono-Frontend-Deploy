@@ -70,8 +70,10 @@ export default function ChatConsultPage() {
       navigate('/chat');
     });
 
-    // 상담 시작
-    socketService.startConsult(`user-${Date.now()}`);
+    // 상담 시작 - 사용자 정보 가져오기
+    const userName = localStorage.getItem('userName');
+
+    socketService.startConsult(`user-${Date.now()}`, userName || undefined);
 
     return () => {
       socketService.disconnect();

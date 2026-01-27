@@ -1,5 +1,5 @@
-import talkMoono from '@/assets/images/ai-chat-moono.png';
 import connectMoono from '@/assets/images/search-moono.png';
+import talkMoono from '@/assets/images/talk-moono.png';
 import * as styles from '../style/ConsultModal.css';
 
 type ModalType = 'connecting' | 'endConsult' | 'summary' | 'summarizing';
@@ -87,7 +87,7 @@ export default function ConsultModal({
         return (
           <div className={styles.modalContent}>
             <img src={talkMoono} alt="요약하기" className={styles.modalImage} />
-            <h2 className={styles.modalTitle}>요약을 하시나요?</h2>
+            <h2 className={styles.modalTitle}>요약을 원하시나요?</h2>
             <p className={styles.modalDescription}>
               요약 진행 시, 상담이 종료되며
               <br />
