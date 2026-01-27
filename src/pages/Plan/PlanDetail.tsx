@@ -33,6 +33,7 @@ export default function PlanDetail() {
   const plan = planId ? MOCK_PLANS.find((p) => p.id === planId) : null;
   const [isFlipped, setIsFlipped] = useState(false);
 
+  // 차트 데이터 계산 (0-100 점수로 정규화)
   const chartData = useMemo(() => {
     if (!plan) {
       return {
@@ -50,6 +51,7 @@ export default function PlanDetail() {
     const { price, dataAmountMb, voiceMinutes, smsIncluded, overageSpeedMbps } =
       plan;
 
+    // 최대값 계산
     const maxPrice = Math.max(...MOCK_PLANS.map((p) => p.price));
     const maxData = Math.max(
       ...MOCK_PLANS.map((p) =>
@@ -64,8 +66,9 @@ export default function PlanDetail() {
       ...MOCK_PLANS.map((p) => p.overageSpeedMbps ?? 0),
     );
 
+    // 점수 계산 (0-100)
     const priceScore =
-      price > 0 ? Math.round(((maxPrice - price) / maxPrice) * 100) : 0;
+      price > 0 ? Math.round(((maxPrice - price) / maxPrice) * 100) : 0; // 낮을수록 좋음
     const dataScore =
       dataAmountMb === 0 ? 100 : Math.round((dataAmountMb / maxData) * 100);
     const voiceScore =
@@ -173,11 +176,13 @@ export default function PlanDetail() {
 
             <h2 className={styles.planName}>{name}</h2>
 
+            {/* 네트워크 타입 */}
             <div className={styles.section}>
               <div className={styles.sectionTitle}>네트워크</div>
               <div className={styles.badge}>{networkType}</div>
             </div>
 
+            {/* 데이터 */}
             <div className={styles.section}>
               <div className={styles.sectionTitle}>데이터</div>
               <div className={styles.value}>
@@ -192,6 +197,7 @@ export default function PlanDetail() {
               )}
             </div>
 
+            {/* 음성통화 */}
             <div className={styles.section}>
               <div className={styles.sectionTitle}>음성통화</div>
               <div className={styles.value}>
@@ -199,12 +205,13 @@ export default function PlanDetail() {
               </div>
             </div>
 
+            {/* 문자 */}
             <div className={styles.section}>
               <div className={styles.sectionTitle}>문자</div>
               <div className={styles.value}>{smsIncluded}건</div>
             </div>
 
-            {/* OTT 서비스 부분 수정 */}
+            {/* OTT 서비스 부분*/}
             {subscriptionServices.length > 0 && (
               <div className={styles.section}>
                 <div className={styles.sectionTitle}>OTT 혜택</div>
@@ -247,6 +254,7 @@ export default function PlanDetail() {
               </div>
             )}
 
+            {/* 그래프 보기 힌트 */}
             <div className={styles.flipHint}>그래프 보기 click!!</div>
           </div>
 
@@ -265,11 +273,14 @@ export default function PlanDetail() {
           </div>
         </button>
 
+        {/* 신청 버튼 */}
         <button
           type="button"
           className={styles.applyButton}
           onClick={() => {
+            // localStorage에 현재 사용중인 요금제 저장
             localStorage.setItem('currentPlanId', plan.id.toString());
+            // Plan 페이지로 이동
             navigate(PAGE_PATHS.PLAN);
           }}
         >
