@@ -7,6 +7,7 @@ import ProxyGuide from '@/pages/Customer/ProxyGuide';
 import MyPage from '@/pages/MyPage/MyPage';
 import Counsel from '@/pages/MyPage/pages/Counsel';
 import ProtectedRoute from '@/shared/routes/ProtectedRoute';
+import Admin from '../pages/Admin/SummaryPage';
 import ChatAdminPage from '../pages/Chat/ChatAdminPage';
 import ChatConsultPage from '../pages/Chat/ChatConsultPage';
 import ChatManualPage from '../pages/Chat/ChatManualPage';
@@ -111,6 +112,10 @@ export default function RouterProvider() {
     {
       path: PAGE_PATHS.PERSONALITY_TEST,
       Component: PersonalityTest,
+    },
+    {
+      path: PAGE_PATHS.ADMIN,
+      Component: Admin,
     },
   ]);
   return <Provider router={router} />;
