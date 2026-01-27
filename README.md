@@ -1,7 +1,7 @@
 # AI 기반 통신사 요금제 추천 및 실시간 상담 서비스, 다무너 (DaMoono) 🐙
 
 (대충 이미지 넣을거임 ㅇㅇ ex )
-<img width="2695" height="1793" alt="image" src="https://github.com/user-attachments/assets/1c3938b5-b14c-405f-aa1c-13d8ee3291c8" />
+<img width="1300" height="853" alt="image" src="https://github.com/user-attachments/assets/1c3938b5-b14c-405f-aa1c-13d8ee3291c8" />
 **다무너(DaMoono)** 는
 사용자의 통신 사용 패턴과 성향을 분석해 최적의 요금제를 추천하고,
 AI 챗봇과 실시간 상담사 연결을 결합하여
