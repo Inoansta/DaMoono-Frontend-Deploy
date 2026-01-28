@@ -12,7 +12,7 @@ class SocketService {
     }
 
     const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-    this.socket = io(apiUrl);
+    this.socket = io(apiUrl, { withCredentials: true });
 
     this.socket.on('connect', () => {
       console.log('🔌 Socket 연결됨:', this.socket?.id);
