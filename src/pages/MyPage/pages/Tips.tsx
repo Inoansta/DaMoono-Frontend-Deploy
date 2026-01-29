@@ -27,7 +27,7 @@ export default function TipsPage() {
             </li>
             <li className={css.featureItem}>
               <span className={css.checkBox}>✓</span>
-              성향 테스트로 맞춤 서비스를
+              나에게 맞는 맞춤 서비스를
             </li>
           </ul>
         </div>
@@ -53,8 +53,8 @@ export default function TipsPage() {
             },
             {
               id: 4,
-              title: '나의 성향을 알아볼 수 있어요',
-              description: '메뉴의 성향 탭을 사용해보세요!',
+              title: '나에게 맞는 서비스를 알 수 있어요',
+              description: '메뉴의 서비스 탭을 이용해보세요!',
               imageUrl: '/src/assets/images/tip-guide-3.png',
             },
           ]}

@@ -6,7 +6,7 @@ import testIcon from '@/assets/images/personalityTest-icon.png';
 import subscribeIcon from '@/assets/images/subscribe-phone-icon.png';
 import * as css from '../styles/MyPage.css';
 
-export type MenuType = '요금제' | '구독' | '성향';
+export type MenuType = '요금제' | '구독' | '서비스';
 
 type MenuItem = {
   label: string;
@@ -17,7 +17,7 @@ type MenuItem = {
   };
 };
 
-const TAB_LIST: MenuType[] = ['요금제', '구독', '성향'];
+const TAB_LIST: MenuType[] = ['요금제', '구독', '서비스'];
 
 const MENU_MAP: Record<MenuType, MenuItem[]> = {
   요금제: [
@@ -42,9 +42,9 @@ const MENU_MAP: Record<MenuType, MenuItem[]> = {
       state: { compare: false },
     },
   ],
-  성향: [
+  서비스: [
     {
-      label: '성향 테스트 하러가기',
+      label: '맞춤형 서비스 추천받기',
       icon: testIcon,
       path: '/service-recommendation',
       state: { compare: false },
