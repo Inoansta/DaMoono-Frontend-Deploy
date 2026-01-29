@@ -3,39 +3,39 @@ import { style } from '@vanilla-extract/css';
 const SCOREDREAM = "'S-Core Dream', sans-serif";
 
 export const scrollArea = style({
+  position: 'relative',
   width: '100%',
-  minHeight: '100vh',
-  overflowY: 'auto', // ✅ 스크롤 활성화의 핵심
-  display: 'flex',
-  flexDirection: 'column',
-  paddingBottom: '160px', // 하단 고정 요소 공간 확보
+  height: '100%',
+  overflowY: 'auto',
+  paddingBottom: '140px',
   boxSizing: 'border-box',
-  backgroundColor: '#FFFFFF',
 });
 
-// 상단 중앙 로고 (반응형)
+// 상단 중앙 로고 이미지
 export const topLogo = style({
-  width: 'min(80px, 18vw)',
-  height: 'auto',
-  aspectRatio: '80 / 50',
-  margin: '10px auto 0',
+  position: 'absolute',
+  width: '80px',
+  height: '50px',
+  left: '50%',
+  transform: 'translateX(-50%)',
+  top: '0px',
   backgroundImage: 'url("../../../assets/images/logo.png")',
   backgroundSize: 'contain',
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center',
-  flexShrink: 0,
 });
 
 export const headerFrame = style({
+  position: 'absolute',
   width: 'calc(100% - 32px)',
-  minHeight: '50px',
-  margin: '20px auto 0',
+  height: '50px',
+  left: '16px',
+  top: '45px',
   background: '#FEFDFD',
   boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.15)',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  flexShrink: 0,
 });
 
 export const headerTitle = style({
@@ -45,94 +45,68 @@ export const headerTitle = style({
   color: '#000000',
 });
 
-// ✅ 타이틀과 캐릭터를 가로로 배치하기 위한 기준점
-export const titleContainer = style({
-  position: 'relative',
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'flex-start',
-  padding: '25px 24px 0',
-  gap: '12px',
-  boxSizing: 'border-box',
-});
-
 export const subTitle = style({
+  position: 'absolute',
+  width: 'calc(100% - 48px)',
+  left: '24px',
+  top: '115px',
   fontFamily: SCOREDREAM,
   fontWeight: 600,
-  fontSize: 'clamp(16px, 4.5vw, 20px)',
+  fontSize: '20px',
   lineHeight: '1.2',
   color: '#000000',
-  flex: 1,
-  paddingRight: '22%', // 캐릭터와 겹치지 않게 여백 확보
 });
 
-// ✅ FAQ 캐릭터처럼 공격적으로 작아지는 캐릭터 이미지
+// 우측 상단 캐릭터 이미지
 export const characterImage = style({
   position: 'absolute',
-  width: 'clamp(35px, 20vw, 95px)', // 최솟값을 확 낮춰서 반응형 강화
-  height: 'auto',
-  aspectRatio: '1 / 1',
-  right: '24px',
-  top: '20px',
+  width: '95px',
+  height: '95px',
+  right: '12px',
+  top: '105px',
   backgroundImage: 'url("../../../assets/images/question.png")',
   backgroundSize: 'contain',
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center',
-  zIndex: 2,
-
-  // 초소형 기기 대응
-  '@media': {
-    'screen and (max-width: 360px)': {
-      width: '45px',
-      right: '16px',
-    },
-  },
 });
 
 export const statusText = style({
-  padding: '15px 24px 0',
+  position: 'absolute',
+  left: '24px',
+  top: '185px',
   fontFamily: SCOREDREAM,
   fontStyle: 'italic',
   fontWeight: 700,
-  fontSize: 'clamp(14px, 4vw, 18px)',
-});
-
-// 프로그레스 바 영역 (가로 배치)
-export const progressWrapper = style({
-  display: 'flex',
-  alignItems: 'center',
-  padding: '15px 24px 0',
-  gap: '10px',
+  fontSize: '18px',
 });
 
 export const progressBarContainer = style({
-  flex: 1,
+  position: 'absolute',
+  width: 'calc(100% - 100px)',
   height: '25px',
+  left: '24px',
+  top: '225px',
   background: '#FFFFFF',
   border: '1px solid #EFEFEF',
   boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.1)',
   overflow: 'hidden',
-  position: 'relative',
-});
-
-export const progressGauge = style({
-  height: '100%',
-  background: '#FBC02D',
-  transition: 'width 0.3s ease',
 });
 
 export const percentText = style({
+  position: 'absolute',
+  right: '15px',
+  top: '225px',
   fontFamily: SCOREDREAM,
   fontWeight: 700,
-  fontSize: 'clamp(14px, 4vw, 18px)',
-  whiteSpace: 'nowrap',
+  fontSize: '18px',
+  lineHeight: '25px',
 });
 
-// 문서 카드 (스크롤이 생기도록 아래로 자연스럽게 쌓임)
 export const documentCard = style({
+  position: 'absolute',
   width: 'calc(100% - 48px)',
-  margin: '24px auto 0',
-  minHeight: '110px',
+  height: '110px',
+  left: '24px',
   background: '#FEFDFD',
   boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.15)',
   borderRadius: '12px',
@@ -140,8 +114,8 @@ export const documentCard = style({
   flexDirection: 'column',
   alignItems: 'flex-start',
   justifyContent: 'center',
-  padding: '20px 30px',
-  boxSizing: 'border-box',
+  paddingLeft: '30px',
+  border: 'none',
   cursor: 'pointer',
 });
 
@@ -162,8 +136,8 @@ export const docSubText = style({
 });
 
 export const linkButton = style({
-  width: 'min(180px, 100%)',
-  height: '32px',
+  width: '180px',
+  height: '28px',
   background: '#FBE88A',
   boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
   border: 'none',
@@ -173,50 +147,75 @@ export const linkButton = style({
   fontSize: '12px',
   marginTop: '12px',
   alignSelf: 'center',
+  marginLeft: '-30px',
   cursor: 'pointer',
-});
-
-// 하단 고정 레이아웃 중앙 정렬
-const fixedBase = style({
-  position: 'fixed',
-  left: '50%',
-  transform: 'translateX(-50%)',
-  width: '100%',
-  maxWidth: '480px',
-  boxSizing: 'border-box',
-  zIndex: 100,
-});
-
-export const warningBox = style([
-  fixedBase,
-  {
-    bottom: '80px',
-    height: '46px',
-    background: '#FFA629',
-    borderTop: '1px solid #000000',
-    borderBottom: '1px solid #000000',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+  transition: 'background-color 0.2s ease, transform 0.1s ease',
+  selectors: {
+    '&:hover': { backgroundColor: '#F9D84A' },
+    '&:active': { transform: 'scale(0.98)' },
   },
-]);
+});
+
+// 하단 주의사항 주황색 박스
+export const warningBox = style({
+  position: 'fixed',
+  bottom: '80px',
+  width: 'inherit',
+  maxWidth: '480px',
+  height: '46px',
+  background: '#FFA629',
+  border: '1px solid #000000',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  zIndex: 90,
+});
 
 export const warningText = style({
   fontFamily: SCOREDREAM,
   fontWeight: 600,
   fontSize: '13px',
   color: '#000000',
+  textAlign: 'center',
 });
 
-export const navBar = style([
-  fixedBase,
-  {
-    bottom: 0,
-    height: '80px',
-    background: '#FFFFFF',
-    borderTop: '1px solid #EFEFEF',
-    display: 'flex',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-]);
+export const navBar = style({
+  position: 'fixed',
+  bottom: 0,
+  width: 'inherit',
+  maxWidth: '480px',
+  height: '80px',
+  background: '#FFFFFF',
+  borderTop: '1px solid #EFEFEF',
+  display: 'flex',
+  justifyContent: 'space-around',
+  alignItems: 'center',
+  zIndex: 1000,
+});
+
+export const navItem = style({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flex: 1,
+  background: 'none',
+  border: 'none',
+  cursor: 'pointer',
+});
+
+export const navIcon = style({
+  width: '26px',
+  height: '26px',
+  backgroundSize: 'contain',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
+});
+
+export const navText = style({
+  fontFamily: SCOREDREAM,
+  fontWeight: 400,
+  fontSize: '11px',
+  marginTop: '4px',
+  color: '#000000',
+});
