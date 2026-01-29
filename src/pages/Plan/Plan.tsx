@@ -193,7 +193,7 @@ function SortFilterPanel({
         <div className={styles.selectWrapper} style={{ width: '100px' }}>
           <button
             onClick={() => {
-              setShowSortOrderMenu(!showSortOrderMenu);
+              setShowSortOrderMenu((prev) => !prev);
               setShowSortMenu(false);
               setShowFilterMenu(false);
             }}
@@ -307,7 +307,7 @@ function SortFilterPanel({
         <div className={styles.selectWrapper} style={{ width: '120px' }}>
           <button
             onClick={() => {
-              setShowSortMenu(!showSortMenu);
+              setShowSortMenu((prev) => !prev);
               setShowSortOrderMenu(false);
               setShowFilterMenu(false);
             }}
@@ -397,7 +397,7 @@ function SortFilterPanel({
         <div className={styles.selectWrapper} style={{ width: '80px' }}>
           <button
             onClick={() => {
-              setShowFilterMenu(!showFilterMenu);
+              setShowFilterMenu((prev) => !prev);
               setShowSortMenu(false);
               setShowSortOrderMenu(false);
             }}
