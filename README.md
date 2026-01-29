@@ -2,7 +2,7 @@
 
 ## 실시간 상담 및 AI 기반 상담 요약 통신사 플랫폼, 다무너 (DaMoono) 🐙
 
-<img width="1136" height="624" alt="image" src="https://github.com/user-attachments/assets/ff880c6a-aff5-4124-b319-f3e4be3210da" />
+<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/ff880c6a-aff5-4124-b319-f3e4be3210da" />
 
 
 **다무너(DaMoono)** 는 
@@ -87,7 +87,7 @@ npm run dev
 ```
 
 ## 🏗️ 시스템 아키텍처
-
+<img width="891" height="371" alt="image" src="https://github.com/user-attachments/assets/634658b6-132a-4b19-b61c-17f33e5fa13b" />
 ```
 Frontend (React + Vite)
    ↕ REST API / WebSocket
