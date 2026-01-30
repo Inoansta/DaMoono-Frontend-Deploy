@@ -131,8 +131,6 @@ const SummaryPage = () => {
 
         <BackButton targetPath="/chat/admin" label="상담 목록으로 돌아가기" />
       </motion.div>
-
-      <BottomNav />
     </Layout>
   );
 };

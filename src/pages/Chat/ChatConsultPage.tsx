@@ -22,7 +22,13 @@ interface Message {
   timestamp: Date;
 }
 
-type ModalType = 'connecting' | 'endConsult' | 'summary' | 'summarizing' | null;
+type ModalType =
+  | 'connecting'
+  | 'endConsult'
+  | 'summary'
+  | 'summarizing'
+  | 'noData'
+  | null;
 
 // 🔥 전역 플래그로 중복 실행 완전 방지
 let isConsultPageInitialized = false;
@@ -209,13 +215,20 @@ export default function ChatConsultPage() {
         },
       );
 
-      socketService.endConsult();
+      const payload = response.data.payload;
 
-      // response.data 전체가 아니라 .payload만 넘깁니다.
+      if (!payload || (payload.summary && payload.summary.trim() === '')) {
+        setModalType('noData');
+        sessionStorage.removeItem('is_user_summarizing');
+        return;
+      }
+
+      // ✅ 데이터가 정상일 때만 종료 및 이동
+      socketService.endConsult();
       navigate('/summary', {
         state: {
-          summaryData: response.data.payload,
-          from: 'chat', // 채팅에서 왔다는 정보 추가
+          summaryData: payload,
+          from: 'chat',
         },
       });
       setModalType(null);
@@ -231,6 +244,10 @@ export default function ChatConsultPage() {
   };
 
   const handleCloseModal = () => {
+    if (modalType === 'noData') {
+      setModalType(null);
+      return;
+    }
     if (modalType === 'connecting') {
       if (_sessionId) {
         socketService.endConsult();
@@ -273,7 +290,8 @@ export default function ChatConsultPage() {
           onClose={
             modalType === 'connecting' ||
             modalType === 'endConsult' ||
-            modalType === 'summary'
+            modalType === 'summary' ||
+            modalType === 'noData'
               ? handleCloseModal
               : undefined
           }

@@ -164,25 +164,33 @@ const SummaryPage = () => {
           <CharacterScene />
         </motion.section>
 
-        <motion.section className={s.contentSection} variants={itemVariants}>
-          <SummaryResultCard
-            category={summaryData.category}
-            summary={summaryData.summary}
-            coreActions={summaryData.coreActions}
-          />
-        </motion.section>
+        {summaryData?.summary && (
+          <motion.section className={s.contentSection} variants={itemVariants}>
+            <SummaryResultCard
+              category={summaryData.category}
+              summary={summaryData.summary}
+              coreActions={summaryData.coreActions}
+            />
+          </motion.section>
+        )}
 
-        <motion.section className={s.contentSection} variants={itemVariants}>
-          <StatusCard currentStatus={summaryData.currentStatus} />
-        </motion.section>
+        {summaryData?.currentStatus?.length > 0 && (
+          <motion.section className={s.contentSection} variants={itemVariants}>
+            <StatusCard currentStatus={summaryData.currentStatus} />
+          </motion.section>
+        )}
 
-        <motion.section className={s.contentSection} variants={itemVariants}>
-          <WarningCard notices={summaryData.notices} />
-        </motion.section>
+        {summaryData?.notices?.length > 0 && (
+          <motion.section className={s.contentSection} variants={itemVariants}>
+            <WarningCard notices={summaryData.notices} />
+          </motion.section>
+        )}
 
-        <motion.section className={s.contentSection} variants={itemVariants}>
-          <NextActionCard nextActions={summaryData.nextActions} />
-        </motion.section>
+        {summaryData?.nextActions?.length > 0 && (
+          <motion.section className={s.contentSection} variants={itemVariants}>
+            <NextActionCard nextActions={summaryData.nextActions} />
+          </motion.section>
+        )}
 
         <motion.section className={s.contentSection} variants={itemVariants}>
           {/* <Accordion type="guide" data={MOCK_SUMMARY_DATA.guides} />

@@ -2,7 +2,12 @@ import connectMoono from '@/assets/images/search-moono.png';
 import talkMoono from '@/assets/images/talk-moono.png';
 import * as styles from '../style/ConsultModal.css';
 
-type ModalType = 'connecting' | 'endConsult' | 'summary' | 'summarizing';
+type ModalType =
+  | 'connecting'
+  | 'endConsult'
+  | 'summary'
+  | 'summarizing'
+  | 'noData';
 
 interface ConsultModalProps {
   type: ModalType;
@@ -122,6 +127,34 @@ export default function ConsultModal({
               잠시만 기다려주세요
             </h2>
             <p className={styles.modalSubtext}>평균 소요시간 3분 내외</p>
+          </div>
+        );
+
+      case 'noData':
+        return (
+          <div className={styles.modalContent}>
+            <img
+              src={connectMoono} // 기존 이미지 활용
+              alt="데이터 부족"
+              className={styles.modalImage}
+            />
+            <h2 className={styles.modalTitle}>
+              요약할 수 있는 내용이 부족합니다
+            </h2>
+            <p className={styles.modalSubtext}>
+              상담사와 조금 더 대화를 나눈 후에
+              <br />
+              다시 요약을 요청해 주세요.
+            </p>
+            <div className={styles.buttonGroup}>
+              <button
+                type="button"
+                onClick={onClose} // 돌아가기 버튼
+                className={styles.confirmButton}
+              >
+                확인
+              </button>
+            </div>
           </div>
         );
 
