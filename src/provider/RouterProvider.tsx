@@ -6,6 +6,7 @@ import MinorGuide from '@/pages/Customer/MinorGuide';
 import ProxyGuide from '@/pages/Customer/ProxyGuide';
 import MyPage from '@/pages/MyPage/MyPage';
 import Counsel from '@/pages/MyPage/pages/Counsel';
+import NotFound from '@/pages/NotFound/NotFound';
 import AdminRoute from '@/shared/routes/AdminRoute';
 import ProtectedRoute from '@/shared/routes/ProtectedRoute';
 import Admin from '../pages/Admin/SummaryPage';
@@ -121,6 +122,11 @@ export default function RouterProvider() {
     {
       path: PAGE_PATHS.ADMIN,
       Component: Admin,
+    },
+    // NotFound 페이지는 반드시 마지막에 둘 것
+    {
+      path: '*',
+      Component: NotFound,
     },
   ]);
   return <Provider router={router} />;
